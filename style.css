@@ -108,7 +108,7 @@ html::-webkit-scrollbar-thumb{
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: url(images/back.png) no-repeat;
+    background: url(images/melismark.jpg) no-repeat;
     background-size: cover;
     background-position: center center;
 }
@@ -123,13 +123,14 @@ html::-webkit-scrollbar-thumb{
     font-weight: bolder;
     margin-bottom: 2rem;
     line-height: 7rem;
-    color: var(--black);
+    color: #FAF3E0;
     text-shadow: var(--box-shadow);
 }
 .home .homeContent p{
     font-size: 1.8rem;
     line-height: 2;
     margin-bottom: 2rem;
+    color: #FAF3E0;
 }
 .home .homeContent .home-btn{
     height: 3rem;
