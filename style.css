@@ -40,7 +40,7 @@ html::-webkit-scrollbar-thumb{
     align-items: center;
     justify-content: space-between;
     position: fixed;
-    padding: 1.4rem 7%;
+    padding: 0.1em 7%;
     z-index: 999;
 }
 .header .logoContent{
@@ -50,11 +50,13 @@ html::-webkit-scrollbar-thumb{
 .header .logoContent .logo img{
     height: 4rem;
 }
-.header .logoContent .logoName {
-    color: var(--black);
-    font-size: 2rem;
-    font-weight: bolder;
-}
+.logoName img {
+    width: 150px; /* você pode ajustar esse valor */
+    height: auto;
+    cursor: pointer;
+    margin-top: 30px;
+  }
+  
 
 .header .navbar a{
     font-size: 2rem;
@@ -111,6 +113,7 @@ html::-webkit-scrollbar-thumb{
     background: url(images/melismark.jpg) no-repeat;
     background-size: cover;
     background-position: center center;
+    margin-top: 67px;
 }
 .home .homeContent{
     width: 50%;
