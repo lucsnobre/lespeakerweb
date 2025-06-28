@@ -1,29 +1,39 @@
 "use client";
 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
-// Corrige o problema do ícone padrão do Leaflet com Webpack
-const icon = L.icon({ 
-    iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png", 
-    iconSize: [25, 41],
-    iconAnchor: [12, 41]
+// Corrige o problema do ícone padrão do Leaflet não aparecer
+import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
+import iconUrl from 'leaflet/dist/images/marker-icon.png';
+import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
+
+delete (L.Icon.Default.prototype as any)._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: iconRetinaUrl.src,
+  iconUrl: iconUrl.src,
+  shadowUrl: shadowUrl.src,
 });
 
-export default function Map() {
-  const position: [number, number] = [-23.5505, -46.6333]; // Posição de exemplo: São Paulo
+
+const Map = () => {
+  const position: [number, number] = [-23.5505, -46.6333]; // Coordenadas de exemplo (São Paulo)
 
   return (
-    <MapContainer center={position} zoom={13} style={{ height: '100%', width: '100%' }}>
+    <MapContainer center={position} zoom={15} scrollWheelZoom={false} className="h-full w-full rounded-lg">
       <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={position} icon={icon}>
+      <Marker position={position}>
         <Popup>
-          Lespeaker Áudio Part's <br /> Estamos aqui!
+          LeSpeaker Audio Parts <br /> Estamos aqui!
         </Popup>
       </Marker>
     </MapContainer>
   );
-} 
+};
+
+export default Map; 

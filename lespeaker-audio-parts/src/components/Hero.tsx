@@ -1,85 +1,92 @@
 "use client";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import { motion } from "framer-motion";
+import { motion as motion3d } from "framer-motion-3d";
+import { BoomboxModel } from "./BoomboxModel";
+import { Suspense } from "react";
 
-import { motion, Variants } from "framer-motion";
-import { ArrowRight } from "lucide-react"; // Usando lucide para ícones
-
-const slogan = "Potencialize seu som com quem entende";
-
-const sentence: Variants = {
-  hidden: { opacity: 1 },
-  visible: {
-    opacity: 1,
-    transition: {
-      delay: 0.5,
-      staggerChildren: 0.08,
-    },
-  },
-};
-
-const letter: Variants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-  },
-};
-
-const buttonVariants: Variants = {
-  hover: {
-    scale: 1.05,
-    rotateX: 10,
-    rotateY: -10,
-    boxShadow: "0px 15px 30px rgba(0, 0, 0, 0.4)",
-    transition: {
-      type: "spring",
-      stiffness: 300,
-      damping: 15,
-    },
-  },
-  tap: {
-    scale: 0.95,
-  }
-};
-
-export default function Hero() {
+const Hero = () => {
   return (
-    <div className="relative flex items-center justify-center h-screen overflow-hidden bg-dark-blue">
-      {/* Podemos adicionar uma imagem de fundo aqui depois */}
-      <div className="absolute inset-0 bg-black opacity-50 z-10" />
-      
-      <div className="relative z-20 flex flex-col items-center text-center p-4">
-        <motion.h1
-          className="text-4xl md:text-6xl font-bold text-white mb-8"
-          variants={sentence}
-          initial="hidden"
-          animate="visible"
-        >
-          {slogan.split("").map((char, index) => (
-            <motion.span key={char + "-" + index} variants={letter}>
-              {char}
-            </motion.span>
-          ))}
-        </motion.h1>
-
-        <div className="flex flex-col sm:flex-row gap-4">
-          <motion.button
-            className="px-8 py-4 text-lg font-semibold text-white rounded-lg backdrop-blur-sm bg-white/10 border border-white/20"
-            variants={buttonVariants}
-            whileHover="hover"
-            whileTap="tap"
-          >
-            Nossos Serviços
-          </motion.button>
-          <motion.button
-            className="flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-subtle-red rounded-lg"
-            variants={buttonVariants}
-            whileHover="hover"
-            whileTap="tap"
-          >
-            Ver Produtos <ArrowRight className="ml-2" size={24} />
-          </motion.button>
+    <section 
+      className="relative h-[98vh] w-full overflow-hidden bg-background"
+    >
+      <div className="container relative z-10 mx-auto grid h-full grid-cols-1 items-center gap-8 px-4 lg:grid-cols-2 lg:gap-16">
+        <div className="relative z-10 max-w-3xl">
+          <div className="reveal-text space-y-6">
+            <div className="h-8" />
+            <motion.h1
+              className="split-text-reveal text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-7xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              Soluções completas em áudio
+            </motion.h1>
+            <motion.p
+              className="text-balance text-lg text-muted font-light"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              Especialistas em reparo e otimização de equipamentos de som, trazendo vida nova ao seu áudio.
+            </motion.p>
+            <motion.div
+              className="flex flex-wrap gap-4 pt-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+            >
+              <button className="btn btn-primary group relative overflow-hidden rounded-lg px-6 py-3">
+                <span className="relative z-10">Conheça nosso trabalho</span>
+                <div className="absolute inset-0 z-0 h-full w-full bg-gradient-to-r from-accent via-accent-hover to-accent bg-[length:200%_100%] transition-all duration-500 ease-out group-hover:bg-[position:100%_0%]"></div>
+                <div className="absolute inset-0 z-[5] opacity-0 mix-blend-overlay transition-opacity duration-500 group-hover:opacity-100">
+                  <div className="h-full w-full bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.2)_0%,_transparent_50%)]"></div>
+                </div>
+              </button>
+              <button className="btn btn-outline group relative overflow-hidden">
+                <span className="relative z-10 transition-all duration-500 group-hover:text-glow">Entre em contato</span>
+              </button>
+            </motion.div>
+          </div>
+        </div>
+        <div className="relative aspect-square w-full">
+          <div className="absolute inset-0">
+            <Canvas>
+              <PerspectiveCamera makeDefault position={[0, 0, 3.5]} fov={50} />
+              <ambientLight intensity={0.8} />
+              <directionalLight position={[5, 5, 5]} intensity={0.5} />
+              <pointLight position={[-5, -5, -5]} intensity={0.2} />
+              <Suspense fallback={null}>
+                <motion3d.group
+                  scale={[1.8, 1.8, 1.8]}
+                  initial={{ rotateY: 0 }}
+                  animate={{ rotateY: [0, Math.PI * 2] }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 15,
+                    ease: "linear"
+                  }}
+                >
+                  <BoomboxModel />
+                </motion3d.group>
+              </Suspense>
+              <OrbitControls
+                enableZoom={false}
+                enablePan={false}
+                maxPolarAngle={Math.PI / 2}
+                minPolarAngle={Math.PI / 2}
+              />
+            </Canvas>
+          </div>
         </div>
       </div>
-    </div>
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(244,63,94,0.08),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(244,63,94,0.05),transparent_30%)]"></div>
+      </div>
+    </section>
   );
-} 
+};
+
+export default Hero; 

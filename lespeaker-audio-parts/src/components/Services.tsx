@@ -1,123 +1,105 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
-import { Wrench, Speaker, ArrowUpCircle } from "lucide-react";
-import { useState } from "react";
-import type { ElementType } from "react";
+import { motion } from 'framer-motion';
+import { Wrench, Speaker, Car, Package2, Headphones, Hammer } from 'lucide-react';
+import { ReactNode } from 'react';
 
-interface Service {
-  icon: ElementType;
-  title: string;
-  description: string;
-  details: string;
-}
-
-const services: Service[] = [
+const services: { icon: ReactNode; title: string; description: string }[] = [
   {
-    icon: Wrench,
+    icon: <Wrench size={40} className="text-accent" />,
     title: "Reparo de Equipamentos",
-    description: "Conserto de caixas, amplificadores, receivers e mais.",
-    details: "Nossa equipe utiliza peças de alta qualidade para diagnosticar e reparar uma vasta gama de problemas, devolvendo a vida ao seu equipamento de som.",
+    description: "Diagnóstico preciso e reparo com peças de alta qualidade para receivers, amplificadores e mais."
   },
   {
-    icon: Speaker,
-    title: "Instalação de Sistemas",
-    description: "Soluções de som automotivo e residencial personalizadas.",
-    details: "Projetamos e instalamos sistemas de som sob medida, seja para seu carro ou sua casa, garantindo uma acústica perfeita e integrada ao ambiente.",
+    icon: <Speaker size={40} className="text-accent" />,
+    title: "Instalação Residencial",
+    description: "Projetos e instalação de home theaters e som ambiente, com acústica e integração perfeitas."
   },
   {
-    icon: ArrowUpCircle,
-    title: "Upgrade e Acessórios",
-    description: "Venda e instalação de peças e acessórios para seu áudio.",
-    details: "Oferecemos uma seleção completa de peças, de alto-falantes a cabos, para você que busca o máximo de performance e qualidade sonora.",
+    icon: <Car size={40} className="text-accent" />,
+    title: "Som Automotivo",
+    description: "De upgrades a sistemas de competição, garantindo qualidade sonora e acabamento impecável."
   },
+  {
+    icon: <Package2 size={40} className="text-accent" />,
+    title: "Venda de Peças",
+    description: "Amplo estoque de componentes originais e de alta performance para garantir o melhor som."
+  },
+  {
+    icon: <Headphones size={40} className="text-accent" />,
+    title: "Consultoria Técnica",
+    description: "Orientação especializada para a escolha, configuração e otimização do seu sistema de áudio."
+  },
+  {
+    icon: <Hammer size={40} className="text-accent" />,
+    title: "Manutenção Preventiva",
+    description: "Checagem completa, limpeza e ajustes para manter seu equipamento sempre em perfeitas condições."
+  }
 ];
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (i: number) => ({
     opacity: 1,
-    transition: {
-      staggerChildren: 0.3,
-    },
-  },
-};
-
-const cardVariants: Variants = {
-  hidden: { y: 50, opacity: 0 },
-  visible: {
     y: 0,
-    opacity: 1,
     transition: {
-      type: "spring",
-      stiffness: 100,
-    },
-  },
+      delay: i * 0.1,
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  })
 };
 
-const ServiceCard = ({ service }: { service: Service }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const Icon = service.icon;
-
+const Services = () => {
   return (
-    <motion.div
-      className="relative p-8 rounded-xl backdrop-blur-sm bg-white/5 border border-white/10 overflow-hidden cursor-pointer"
-      variants={cardVariants}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      whileHover={{ scale: 1.03, y: -5 }}
-      transition={{ type: 'spring', stiffness: 300 }}
-    >
-      <motion.div
-        className="mb-4"
-        animate={{ scale: isHovered ? 1.2 : 1, rotate: isHovered ? 5 : 0 }}
-      >
-        <Icon className="w-12 h-12 text-subtle-red" />
-      </motion.div>
-      <h3 className="text-2xl font-bold mb-2 text-white">{service.title}</h3>
-      <p className="text-gray-300">{service.description}</p>
-      
-      <motion.div
-        initial={{ opacity: 0, height: 0 }}
-        animate={{ opacity: isHovered ? 1 : 0, height: isHovered ? 'auto' : 0 }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
-        className="mt-4"
-      >
-        <p className="text-gray-300">{service.details}</p>
-      </motion.div>
-    </motion.div>
-  );
-};
-
-export default function Services() {
-  return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-light-blue">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-24 sm:py-32">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white">Nossos Serviços</h2>
-          <p className="text-lg text-gray-300 mt-4">
-            Soluções completas para a sua paixão pelo som.
+          <h2 className="font-serif text-4xl md:text-5xl font-bold tracking-tight mb-4 text-foreground">
+            Soluções Completas em Áudio
+          </h2>
+          <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
+            Da restauração de clássicos à instalação de sistemas modernos, oferecemos a expertise que seu som merece.
           </p>
         </motion.div>
 
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <ServiceCard key={index} service={service} />
+            <motion.div
+              key={index}
+              custom={index}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              className="group relative p-8 rounded-lg border border-border bg-card/50
+                         transition-all duration-300
+                         hover:shadow-[0_0_30px_0_rgba(230,57,70,0.3)] hover:border-accent/50 hover:bg-card"
+            >
+              <div className="mb-6 transition-transform duration-300 group-hover:scale-110">
+                {service.icon}
+              </div>
+              <h3 className="text-xl font-bold font-serif mb-3 text-foreground">
+                {service.title}
+              </h3>
+              <p className="text-foreground/70 mb-4">
+                {service.description}
+              </p>
+              <a href="#" className="font-semibold text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Saiba mais
+              </a>
+            </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
-} 
+};
+
+export default Services; 

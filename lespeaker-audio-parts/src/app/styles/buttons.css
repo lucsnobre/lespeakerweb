@@ -1,0 +1,17 @@
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground shadow hover:bg-primary/90;
+  }
+
+  .btn-outline {
+    @apply border border-input bg-transparent text-foreground shadow-sm hover:bg-accent hover:text-accent-foreground;
+  }
+
+  .hover-link {
+    @apply hover:text-accent transition-colors duration-200;
+  }
+} 
