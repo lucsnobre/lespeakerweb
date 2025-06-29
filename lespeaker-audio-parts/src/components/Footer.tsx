@@ -14,10 +14,10 @@ const Map = dynamic(() => import('./Map'), {
 
 const navLinks = [
   { name: "Início", href: "#inicio" },
-  { name: "Sobre", href: "#sobre" },
-  { name: "Serviços", href: "#servicos" },
+    { name: "Sobre", href: "#sobre" },
+    { name: "Serviços", href: "#servicos" },
   { name: "Galeria", href: "#galeria" },
-  { name: "Contato", href: "#contato" },
+    { name: "Contato", href: "#contato" },
 ];
 
 const socialLinks = [

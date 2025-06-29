@@ -7,30 +7,6 @@
 :root {
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
-  --background: 0 0% 100%;
-  --foreground: 240 10% 3.9%;
-  --card: 0 0% 100%;
-  --card-foreground: 240 10% 3.9%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 240 10% 3.9%;
-  --primary: 346.8 77.2% 49.8%;
-  --primary-foreground: 355.7 100% 97.3%;
-  --secondary: 240 4.8% 95.9%;
-  --secondary-foreground: 240 5.9% 10%;
-  --muted: 240 4.8% 95.9%;
-  --muted-foreground: 240 3.8% 46.1%;
-  --accent: 346.8 77.2% 49.8%;
-  --accent-hover: 346.8 77.2% 45%;
-  --accent-foreground: 355.7 100% 97.3%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 240 5.9% 90%;
-  --input: 240 5.9% 90%;
-  --ring: 346.8 77.2% 49.8%;
-  --radius: 0.75rem;
-}
-
-.dark {
   --background: 20 14.3% 4.1%;
   --foreground: 0 0% 95%;
   --card: 24 9.8% 10%;
@@ -51,6 +27,8 @@
   --border: 240 3.7% 15.9%;
   --input: 240 3.7% 15.9%;
   --ring: 346.8 77.2% 49.8%;
+  --radius: 0.75rem;
+  --cursor-color: 244 63 94;
 }
 
 @layer base {
@@ -59,10 +37,6 @@
   }
   body {
     @apply bg-background text-foreground font-sans;
-  }
-
-  :root {
-    --cursor-color: 244 63 94;
   }
   
   html {
@@ -165,7 +139,7 @@
 }
 
 .text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-accent via-accent-hover to-accent-muted;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-accent via-accent-hover to-accent;
   background-size: 200% 100%;
   animation: gradient-x 4s linear infinite;
 }
@@ -177,7 +151,7 @@
 
 .card {
   @apply glass p-6 rounded-lg transition-all duration-300;
-  @apply hover:bg-card-hover/30 hover:scale-[1.02];
+  @apply hover:bg-accent/5 hover:scale-[1.02];
   @apply active:scale-[0.98];
 }
 
@@ -425,4 +399,127 @@
   text-shadow: 0 0 15px hsl(var(--accent) / 0.7),
                0 0 25px hsl(var(--accent) / 0.5),
                0 0 35px hsl(var(--accent) / 0.3);
-} 
+}
+
+/* Classes específicas para iPad */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    @apply px-8;
+  }
+
+  .section {
+    @apply py-16 px-8;
+  }
+
+  .glass {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .text-gradient {
+    background-size: 300% 100%;
+  }
+
+  .card {
+    @apply p-8;
+  }
+
+  .btn {
+    @apply text-lg py-4 px-8;
+  }
+
+  .hover-card:hover {
+    transform: translateY(-8px) rotateX(3deg);
+  }
+}
+
+/* Ajustes gerais de responsividade */
+.responsive-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8;
+}
+
+.responsive-container {
+  @apply container mx-auto px-6 md:px-8 lg:px-12;
+}
+
+.responsive-text {
+  @apply text-base md:text-lg lg:text-xl;
+}
+
+.responsive-heading {
+  @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight;
+}
+
+.responsive-section {
+  @apply py-16 md:py-24 lg:py-32;
+}
+
+/* Melhorias de performance para dispositivos móveis e tablets */
+@media (max-width: 1024px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .animated-gradient-bg {
+    animation-duration: 20s;
+  }
+
+  .text-gradient {
+    animation-duration: 6s;
+  }
+
+  .hover-card,
+  .card-3d {
+    transform-style: flat;
+    perspective: none;
+  }
+}
+
+/* Estilos avançados para botões */
+.btn-primary {
+  background-size: 200% 100%;
+  transition: all 0.5s ease;
+  box-shadow: 0 0 15px rgba(244, 63, 94, 0.2);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 25px rgba(244, 63, 94, 0.4);
+}
+
+.btn-outline {
+  border: 2px solid rgba(244, 63, 94, 0.5);
+  background: linear-gradient(45deg, transparent 50%, rgba(244, 63, 94, 0.1) 50%);
+  background-size: 250% 100%;
+  background-position: 0% 0%;
+  transition: all 0.5s ease;
+}
+
+.btn-outline:hover {
+  background-position: 100% 0%;
+  border-color: rgba(244, 63, 94, 0.8);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(244, 63, 94, 0.2);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(244, 63, 94, 0.5);
+}
+
+/* Efeito de brilho nos botões */
+.btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 50%);
+  transform: scale(0);
+  transition: transform 0.75s ease-out;
+  pointer-events: none;
+}
+
+.btn:hover::after {
+  transform: scale(1);
+}

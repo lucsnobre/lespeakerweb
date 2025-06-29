@@ -3,7 +3,12 @@
 import { motion, useScroll, useSpring } from 'framer-motion';
 import Logo from './Logo';
 
-const navItems = ["Serviços", "Projetos", "Sobre", "Contato"];
+const navItems = [
+  { name: "Serviços", href: "#servicos" },
+  { name: "Projetos", href: "#projetos" },
+  { name: "Sobre", href: "#sobre" },
+  { name: "Contato", href: "#contato" }
+];
 
 const Header = () => {
   const { scrollYProgress } = useScroll();
@@ -23,28 +28,29 @@ const Header = () => {
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-20 items-center justify-between">
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 hover:opacity-90 transition-opacity duration-300">
               <Logo />
             </div>
-            <nav className="hidden md:flex flex-1 items-center justify-center gap-8">
+            <nav className="hidden md:flex flex-1 items-center justify-center gap-8 ml-8">
               {navItems.map((item) => (
                 <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
+                  key={item.name}
+                  href={item.href}
                   className="relative text-sm font-medium text-foreground/80 hover:text-foreground transition-colors duration-300 after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-accent after:transition-transform hover:after:scale-x-100 font-title"
                 >
-                  {item}
+                  {item.name}
                 </a>
               ))}
             </nav>
             <div className="flex items-center justify-end flex-shrink-0">
-              <motion.button
+              <motion.a
+                href="#contato"
                 className="px-5 py-2 text-sm rounded-md bg-transparent border border-accent text-accent hover:bg-accent hover:text-background transition-all duration-300 font-title"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 Orçamento
-              </motion.button>
+              </motion.a>
             </div>
           </div>
         </div>

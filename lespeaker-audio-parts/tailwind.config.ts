@@ -11,49 +11,67 @@ const config: Config = {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: {
+        DEFAULT: "1.5rem",
+        sm: "2rem",
+        md: "2.5rem",
+        lg: "3rem",
+      },
       screens: {
+        sm: "640px",
+        md: "768px",
+        ipad: "810px",
+        lg: "1024px",
+        xl: "1280px",
         "2xl": "1400px",
       },
     },
     extend: {
+      screens: {
+        'ipad': '810px',
+        'ipad-h': { 'raw': '(min-height: 1080px)' },
+      },
       fontFamily: {
         sans: ["var(--font-sans)"],
+      },
+      spacing: {
+        'ipad-header': '88px',
+        'ipad-section': '120px',
       },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        foreground: "#FCFCF7",
         primary: {
           DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          foreground: "#FCFCF7",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          foreground: "#FCFCF7",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          foreground: "#FCFCF7",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          foreground: "#FCFCF7",
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          foreground: "#FCFCF7",
           hover: "hsl(var(--accent-hover))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          foreground: "#FCFCF7",
         },
         card: {
           DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          foreground: "#FCFCF7",
         },
       },
       borderRadius: {
@@ -100,7 +118,10 @@ const config: Config = {
     plugin(function({ addComponents }) {
       addComponents({
         '.btn': {
-          '@apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] disabled:pointer-events-none disabled:opacity-50': {}
+          '@apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] disabled:pointer-events-none disabled:opacity-50': {},
+          '@screen ipad': {
+            '@apply text-base py-4 px-8': {}
+          }
         },
         '.btn-primary': {
           '@apply bg-primary text-primary-foreground shadow hover:bg-primary/90': {}
@@ -110,6 +131,18 @@ const config: Config = {
         },
         '.hover-link': {
           '@apply hover:text-accent transition-colors duration-200': {}
+        },
+        '.ipad-container': {
+          '@apply container mx-auto px-8 md:px-12': {},
+          '@screen ipad': {
+            'max-width': '90%'
+          }
+        },
+        '.ipad-section': {
+          '@apply py-16 md:py-24': {},
+          '@screen ipad': {
+            '@apply py-20': {}
+          }
         }
       })
     })

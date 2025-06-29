@@ -34,7 +34,7 @@ export default function Shop() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white">Nossa Loja</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#FCFCF7]">Nossa Loja</h2>
           <p className="text-lg text-gray-300 mt-4">
             Os melhores componentes para o seu projeto de som.
           </p>
@@ -47,7 +47,7 @@ export default function Shop() {
               onClick={() => setSelectedCategory(category)}
               className={`px-4 py-2 text-sm sm:text-base font-semibold rounded-lg transition-colors duration-300 ${
                 selectedCategory === category
-                  ? "bg-subtle-red text-white"
+                  ? "bg-subtle-red text-[#FCFCF7]"
                   : "bg-light-blue text-gray-300 hover:bg-white/10"
               }`}
             >
@@ -73,7 +73,7 @@ export default function Shop() {
               >
                 <img src={product.image} alt={product.name} className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-white">{product.name}</h3>
+                  <h3 className="text-xl font-bold text-[#FCFCF7]">{product.name}</h3>
                   <p className="text-subtle-red font-semibold text-lg mt-2">
                     R$ {product.price.toFixed(2)}
                   </p>
@@ -82,7 +82,7 @@ export default function Shop() {
                   onClick={() => addItemToCart(product)}
                   className="absolute bottom-6 right-6 flex items-center justify-center w-12 h-12 bg-subtle-red rounded-full opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 hover:scale-110"
                 >
-                  <ShoppingCart className="text-white" />
+                  <ShoppingCart className="text-[#FCFCF7]" />
                 </button>
               </motion.div>
             ))}

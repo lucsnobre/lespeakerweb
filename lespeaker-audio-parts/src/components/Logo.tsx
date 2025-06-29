@@ -1,17 +1,29 @@
 import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Logo = () => {
   return (
-    <div className="flex items-center gap-3">
+    <Link href="/" className="flex items-center gap-3 group">
       <motion.div 
-        className="w-9 h-9 rounded-full bg-brand-red flex items-center justify-center shadow-lg"
-        whileHover={{ rotate: 360, scale: 1.1 }}
+        className="relative w-10 h-10"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
         transition={{ type: 'spring', stiffness: 400, damping: 20 }}
       >
-        <div className="w-3 h-3 rounded-full bg-brand-dark" />
+        <Image
+          src="/logoles.png"
+          alt="Lespeaker Logo"
+          fill
+          className="object-contain"
+          sizes="40px"
+          priority
+        />
       </motion.div>
-      <span className="text-2xl font-bold text-brand-light tracking-tighter">Lespeaker</span>
-    </div>
+      <span className="text-2xl font-bold tracking-tighter text-foreground group-hover:text-accent transition-colors duration-300">
+        Lespeaker
+      </span>
+    </Link>
   );
 };
 

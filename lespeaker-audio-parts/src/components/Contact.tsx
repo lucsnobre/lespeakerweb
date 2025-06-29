@@ -45,7 +45,7 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white">Fale Conosco</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#FCFCF7]">Fale Conosco</h2>
           <p className="text-lg text-gray-300 mt-4">
             Tem alguma dúvida ou projeto em mente? Entre em contato.
           </p>
@@ -73,7 +73,7 @@ export default function Contact() {
               <textarea {...register("message")} placeholder="Sua mensagem..." rows={5} className="w-full p-3 bg-dark-blue rounded-lg border border-white/20 focus:ring-2 focus:ring-subtle-red outline-none" />
               {errors.message && <p className="text-red-400 mt-1 text-sm">{errors.message.message}</p>}
             </div>
-            <button type="submit" className="w-full py-3 bg-subtle-red text-white font-bold rounded-lg hover:bg-red-600 transition-colors">
+            <button type="submit" className="w-full py-3 bg-subtle-red text-[#FCFCF7] font-bold rounded-lg hover:bg-red-600 transition-colors">
               Enviar Mensagem
             </button>
           </motion.form>
@@ -105,7 +105,7 @@ export default function Contact() {
                   transition={{ type: "spring", stiffness: 300 }}
                   animate={{ y: [0, -4, 0] }}
                 >
-                  <item.icon className="w-6 h-6 text-white" />
+                  <item.icon className="w-6 h-6 text-[#FCFCF7]" />
                 </motion.a>
               ))}
             </div>
