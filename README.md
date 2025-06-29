@@ -1,0 +1,48 @@
+<p align="center">
+  <a href="https://lucsnobre.github.io/lespeakerweb/">
+    <img alt="LeSpeakerWeb" src="https://raw.githubusercontent.com/lucsnobre/lespeakerweb/main/public/banner.png" width="100%"/>
+  </a>
+</p>
+
+# LeSpeaker Web 🎧🔥
+
+<p align="center">
+  <img src="https://img.shields.io/github/license/lucsnobre/lespeakerweb?style=for-the-badge"/>
+  <img src="https://img.shields.io/github/deployments/lucsnobre/lespeakerweb/github-pages?style=for-the-badge"/>
+  <img src="https://img.shields.io/github/last-commit/lucsnobre/lespeakerweb?style=for-the-badge"/>
+</p>
+
+**LeSpeaker Web** é uma plataforma web moderna, criada com Next.js, pra quem curte personalização de caixas de som com estilo. O bagulho foi feito pensando na responsa: visual moderno, leveza na performance e integração de partes de áudio modularizadas no projeto.
+
+---
+
+## 🚀 Features
+
+- 🎛️ Componentes de áudio separados e organizados (`lespeaker-audio-parts`)
+- 🌀 Deploy automático com Vercel
+- 🎨 Estilização custom (postcss, tailwind e afins)
+- ⚙️ Configurações avançadas via `vercel.json`
+- 📦 Pronto pra produção com build otimizado
+
+---
+
+## 🧪 Tecnologias usadas
+
+- [Next.js](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [TailwindCSS](https://tailwindcss.com/) (ou PostCSS)
+- [Vercel](https://vercel.com/) (Deploy)
+- [Node.js](https://nodejs.org/)
+- [GitHub Pages](https://pages.github.com/)
+
+---
+
+## 🛠️ Instalação local
+
+Pra rodar o projeto na sua máquina:
+
+```bash
+git clone https://github.com/lucsnobre/lespeakerweb.git
+cd lespeakerweb
+npm install
+npm run dev
