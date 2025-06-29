@@ -177,7 +177,7 @@
 
 .card {
   @apply glass p-6 rounded-lg transition-all duration-300;
-  @apply hover:bg-card-hover/30 hover:scale-[1.02];
+  @apply hover:bg-card/30 hover:scale-[1.02];
   @apply active:scale-[0.98];
 }
 
