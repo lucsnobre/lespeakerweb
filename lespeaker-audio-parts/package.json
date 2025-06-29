@@ -16,7 +16,6 @@
     "@react-three/fiber": "^9.1.2",
     "firebase": "^11.9.1",
     "framer-motion": "^12.18.1",
-    "framer-motion-3d": "^12.4.13",
     "keen-slider": "^6.8.6",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.522.0",
