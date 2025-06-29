@@ -7,10 +7,9 @@ import { useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { useRef } from 'react';
 import * as THREE from 'three';
-import { motion } from "framer-motion-3d";
-import { GroupProps } from '@react-three/fiber';
+// (tipo de props genérico para grupos R3F)
 
-export function BoomboxModel(props: GroupProps) {
+export function BoomboxModel(props: any) {
   const { scene } = useGLTF('/boombox_1k.glb');
   const modelRef = useRef<THREE.Group>(null!);
 
@@ -22,6 +21,9 @@ export function BoomboxModel(props: GroupProps) {
       // Efeito de respiração suave
       const breathingScale = 1 + Math.sin(state.clock.elapsedTime) * 0.02;
       modelRef.current.scale.setScalar(breathingScale);
+
+      // Animação de flutuação suave no eixo Y
+      modelRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.1;
     }
   });
 
@@ -43,18 +45,9 @@ export function BoomboxModel(props: GroupProps) {
   });
 
   return (
-    <motion.group
-      initial={{ y: -0.1 }}
-      animate={{ y: 0.1 }}
-      transition={{
-        repeat: Infinity,
-        repeatType: "reverse",
-        duration: 2,
-        ease: "easeInOut"
-      }}
-    >
-      <primitive object={clonedScene} {...props} ref={modelRef} />
-    </motion.group>
+    <group ref={modelRef} {...props}>
+      <primitive object={clonedScene} />
+    </group>
   );
 }
 

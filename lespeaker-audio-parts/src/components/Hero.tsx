@@ -2,9 +2,8 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { motion } from "framer-motion";
-import { motion as motion3d } from "framer-motion-3d";
-import { BoomboxModel } from "./BoomboxModel";
 import { Suspense } from "react";
+import { RotatingBoombox } from "./RotatingBoombox";
 
 const Hero = () => {
   return (
@@ -58,18 +57,7 @@ const Hero = () => {
               <directionalLight position={[5, 5, 5]} intensity={0.5} />
               <pointLight position={[-5, -5, -5]} intensity={0.2} />
               <Suspense fallback={null}>
-                <motion3d.group
-                  scale={[1.8, 1.8, 1.8]}
-                  initial={{ rotateY: 0 }}
-                  animate={{ rotateY: [0, Math.PI * 2] }}
-                  transition={{
-                    repeat: Infinity,
-                    duration: 15,
-                    ease: "linear"
-                  }}
-                >
-                  <BoomboxModel />
-                </motion3d.group>
+                <RotatingBoombox />
               </Suspense>
               <OrbitControls
                 enableZoom={false}
