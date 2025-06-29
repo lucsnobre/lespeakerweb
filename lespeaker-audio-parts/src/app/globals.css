@@ -165,7 +165,7 @@
 }
 
 .text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-accent via-accent-hover to-accent-muted;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-accent via-accent-hover to-accent-hover;
   background-size: 200% 100%;
   animation: gradient-x 4s linear infinite;
 }
