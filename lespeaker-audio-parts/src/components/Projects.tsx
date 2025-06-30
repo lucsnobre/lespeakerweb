@@ -4,21 +4,22 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import Image from "next/image";
+import { images } from "@/config/images";
 
 const portfolioImages = [
-  { id: 1, src: "/gallery/project-1.jpg", category: "Reparo", title: "Restauração de Receiver Clássico" },
-  { id: 2, src: "/gallery/project-2.jpg", category: "Instalação", title: "Home Theater Sob Medida" },
-  { id: 3, src: "/gallery/project-3.jpg", category: "Customização", title: "Caixas Acústicas Personalizadas" },
-  { id: 4, src: "/gallery/project-4.jpg", category: "Som Automotivo", title: "Sistema de Alta Fidelidade" },
-  { id: 5, src: "/gallery/project-5.jpg", category: "Upgrade", title: "Otimização de Amplificador" },
-  { id: 6, src: "/gallery/project-6.jpg", category: "Reparo", title: "Manutenção de Toca-Discos" },
+  { id: 1, src: images.gallery[0], category: "Reparo", title: "Restauração de Receiver Clássico" },
+  { id: 2, src: images.gallery[1], category: "Instalação", title: "Home Theater Sob Medida" },
+  { id: 3, src: images.gallery[2], category: "Customização", title: "Caixas Acústicas Personalizadas" },
+  { id: 4, src: images.gallery[3], category: "Som Automotivo", title: "Sistema de Alta Fidelidade" },
+  { id: 5, src: images.gallery[4], category: "Upgrade", title: "Otimização de Amplificador" },
+  { id: 6, src: images.gallery[5], category: "Reparo", title: "Manutenção de Toca-Discos" },
 ];
 
 export default function Projects() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
-    <section id="projetos" className="py-24 sm:py-32">
+    <section className="py-24 sm:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -51,12 +52,15 @@ export default function Projects() {
                 alt={image.title}
                 width={600}
                 height={400}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                <h3 className="text-foreground text-lg font-bold opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                  {image.title}
-                </h3>
+                <div>
+                  <span className="text-accent text-sm font-medium mb-2 block">{image.category}</span>
+                  <h3 className="text-foreground text-lg font-bold opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                    {image.title}
+                  </h3>
+                </div>
               </div>
             </motion.div>
           ))}

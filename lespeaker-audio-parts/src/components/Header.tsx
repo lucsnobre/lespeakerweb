@@ -3,7 +3,12 @@
 import { motion, useScroll, useSpring } from 'framer-motion';
 import Logo from './Logo';
 
-const navItems = ["Serviços", "Projetos", "Sobre", "Contato"];
+const navItems = [
+  { name: "Sobre", href: "sobre" },
+  { name: "Serviços", href: "servicos" },
+  { name: "Projetos", href: "projetos" },
+  { name: "Contato", href: "contato" }
+];
 
 const Header = () => {
   const { scrollYProgress } = useScroll();
@@ -12,6 +17,20 @@ const Header = () => {
     damping: 30,
     restDelta: 0.001
   });
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerOffset = 80; // altura do header
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
 
   return (
     <>
@@ -28,17 +47,18 @@ const Header = () => {
             </div>
             <nav className="hidden md:flex flex-1 items-center justify-center gap-8">
               {navItems.map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
+                <button
+                  key={item.name}
+                  onClick={() => scrollToSection(item.href)}
                   className="relative text-sm font-medium text-foreground/80 hover:text-foreground transition-colors duration-300 after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:origin-center after:scale-x-0 after:bg-accent after:transition-transform hover:after:scale-x-100 font-title"
                 >
-                  {item}
-                </a>
+                  {item.name}
+                </button>
               ))}
             </nav>
             <div className="flex items-center justify-end flex-shrink-0">
               <motion.button
+                onClick={() => scrollToSection("contato")}
                 className="px-5 py-2 text-sm rounded-md bg-transparent border border-accent text-accent hover:bg-accent hover:text-background transition-all duration-300 font-title"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

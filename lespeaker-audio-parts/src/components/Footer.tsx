@@ -27,7 +27,7 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer id="contato" className="bg-card/40 border-t border-border/50 backdrop-blur-lg py-16 px-4 sm:px-6 lg:px-8">
+    <footer className="bg-card/40 border-t border-border/50 backdrop-blur-lg py-16 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-center md:text-left">
         
         {/* Sobre */}

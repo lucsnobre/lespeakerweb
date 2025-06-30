@@ -33,18 +33,17 @@ const About = () => {
 
           {/* Coluna de Imagem */}
           <motion.div
-            className="w-full h-96 rounded-lg overflow-hidden group"
+            className="relative w-full h-[600px] rounded-xl overflow-hidden group shadow-2xl shadow-accent/10"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <Image
-              src="/leOficina.jpg" // Certifique-se que essa imagem está na pasta /public
-              alt="Oficina da LeSpeaker com equipamentos de áudio"
-              width={600}
-              height={400}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent z-10" />
+            <img
+              src="/showcase.jpg"
+              alt="Vitrine de produtos e equipamentos de áudio da LeSpeaker"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             />
           </motion.div>
         </div>

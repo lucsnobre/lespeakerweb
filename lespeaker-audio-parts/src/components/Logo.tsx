@@ -1,16 +1,24 @@
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const Logo = () => {
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-2">
       <motion.div 
-        className="w-9 h-9 rounded-full bg-brand-red flex items-center justify-center shadow-lg"
-        whileHover={{ rotate: 360, scale: 1.1 }}
+        className="relative w-8 h-8 flex-shrink-0"
+        whileHover={{ scale: 1.1 }}
         transition={{ type: 'spring', stiffness: 400, damping: 20 }}
       >
-        <div className="w-3 h-3 rounded-full bg-brand-dark" />
+        <Image
+          src="/lespeaker-logo.png"
+          alt="Lespeaker Logo"
+          fill
+          className="object-contain"
+          sizes="(max-width: 768px) 24px, 32px"
+          priority
+        />
       </motion.div>
-      <span className="text-2xl font-bold text-brand-light tracking-tighter">Lespeaker</span>
+      <span className="text-2xl font-bold text-foreground tracking-tighter">Lespeaker</span>
     </div>
   );
 };
