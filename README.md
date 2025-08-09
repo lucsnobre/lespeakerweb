@@ -1,13 +1,13 @@
 <p align="center">
   <a href="https://lucsnobre.github.io/lespeakerweb/">
-    <img alt="LeSpeakerWeb" src="https://raw.githubusercontent.com/lucsnobre/lespeakerweb/main/public/banner.png" width="100%"/>
+    <img alt="LeSpeakerWeb" src="<img width="1115" height="647" alt="lespeakerweb-atualizado vercel app_ (2)" src="https://github.com/user-attachments/assets/bf230ecd-abea-4ef0-bcc7-af7e1d1fbcd2" />
+" width="100%"/>
   </a>
 </p>
 
 # LeSpeaker Web 🎧🔥
 
 <p align="center">
-  <img src="https://img.shields.io/github/license/lucsnobre/lespeakerweb?style=for-the-badge"/>
   <img src="https://img.shields.io/github/deployments/lucsnobre/lespeakerweb/github-pages?style=for-the-badge"/>
   <img src="https://img.shields.io/github/last-commit/lucsnobre/lespeakerweb?style=for-the-badge"/>
 </p>
