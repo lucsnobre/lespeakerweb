@@ -1,7 +1,7 @@
 <p align="center">
   <a href="https://lucsnobre.github.io/lespeakerweb/">
-    <img alt="LeSpeakerWeb" src="<img width="1115" height="647" alt="lespeakerweb-atualizado vercel app_ (2)" src="https://github.com/user-attachments/assets/bf230ecd-abea-4ef0-bcc7-af7e1d1fbcd2" />
-" width="100%"/>
+    <img width="1115" height="647" alt="lespeakerweb-atualizado vercel app_ (2)" src="https://github.com/user-attachments/assets/819f9a6e-7e61-4d01-8315-aa4105c4d8d8" />
+
   </a>
 </p>
 
