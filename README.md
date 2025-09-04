@@ -5,7 +5,7 @@
   </a>
 </p>
 
-# LeSpeaker Web 🎧🔥
+# Lespeaker
 
 <p align="center">
   <img src="https://img.shields.io/github/deployments/lucsnobre/lespeakerweb/github-pages?style=for-the-badge"/>
