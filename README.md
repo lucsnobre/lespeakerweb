@@ -21,6 +21,6 @@ O site da **Lespeaker** foi feito em Next.JS, Typescript e com React.JS para a d
 
 ```bash
 git clone https://github.com/lucsnobre/lespeakerweb.git
-cd lespeakerweb
+cd lespeaker-audio-parts
 npm install
 npm run dev
